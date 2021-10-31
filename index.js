@@ -27,7 +27,7 @@ async function run() {
         const database = client.db('travel_tevily');
         const serviceCollection = database.collection('service');
         const orderCollection = database.collection('order');
-        const myOrderCollection = database.collection('myOrders');
+        const myOrderCollection = database.collection('myOrder');
 		
 		
 		// There will be All API 
