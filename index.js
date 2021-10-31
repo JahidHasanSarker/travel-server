@@ -27,7 +27,6 @@ async function run() {
         const database = client.db('travel_tevily');
         const serviceCollection = database.collection('service');
         const orderCollection = database.collection('order');
-        const myOrderCollection = database.collection('myOrder');
 		
 		
 		// There will be All API 
@@ -68,13 +67,6 @@ async function run() {
       res.send(orders); 
     });
 
-    // myOrders GET API
-    app.get('/myOrders', async(req, res) => {
-      const cursor = myOrderCollection.find({});
-      const myOrders = await cursor.toArray();
-      res.send(myOrders); 
-    });
-
   
 
     // GET Single API 
@@ -99,16 +91,7 @@ async function run() {
       res.json(result);
     });
 
-    // myOrder DELETE API 
 
-    app.delete('/deleteOrder/:id', async(req, res) => {
-      const id = req.params.id;
-      const query = {_id: ObjectId(id)};
-      const result = await myOrderCollection.deleteOne(query);
-      console.log('deleted user id', result);
-      res.json(result);
-    });
-		
 	}
     finally{
       //await client.close();
