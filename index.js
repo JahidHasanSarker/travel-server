@@ -79,7 +79,24 @@ async function run() {
         const services = await serviceCollection.findOne(query);
         res.json(services);
       })
-
+    // PUT API 
+    
+    app.put('/orders/:id', async(req, res) => {
+      const id = req.params.id;
+      //const query = {_id: ObjectId(id)}
+      const updatedStatus = req.body;
+      const filter = {_id: ObjectId(id)}
+      const options = { upsert: true };
+      const updateDoc = {
+        $set: {
+          status: updatedStatus.status
+          
+        },
+      };
+      const result = await orderCollection.updateOne(filter, updateDoc, options);
+      res.json(result);
+    });
+	
 
     //Orders DELETE API  
 
