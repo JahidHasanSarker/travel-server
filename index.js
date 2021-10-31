@@ -69,7 +69,7 @@ async function run() {
     });
 
     // myOrders GET API
-    app.get('/login-orders', async(req, res) => {
+    app.get('/myOrders', async(req, res) => {
       const cursor = myOrderCollection.find({});
       const myOrders = await cursor.toArray();
       res.send(myOrders); 
